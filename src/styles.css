@@ -49,6 +49,7 @@
 /* styles for article in condensed view */
 .home .condensed .inlineFrame {
 	padding: 15px;
+	padding-right: 25px;
 }
 
 .home .condensed .inlineFrame .title {
