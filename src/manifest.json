@@ -1,6 +1,6 @@
 {
 	"name" : "Readly",
-	"version" : "0.5.2",
+	"version" : "0.6.0",
 	"manifest_version" : 2,
 	
 	"description" : "A little Google Reader treatment for Feedly",
@@ -11,15 +11,16 @@
 		"128" : "icons/readly-128.png"
 	},
 	
-	"content_scripts" : [
-		{
+	"background" : {
+    	"persistent" : false,
+		"scripts" : ["background.js"]
+	},
+	
+	"content_scripts" : [{
 			"matches" : ["*://www.feedly.com/home*"],
 			"css" : ["styles.css"],
 			"js" : ["script.js"]
-		}
-	],
+	}],
 	
-	"permissions" : [
-		"tabs"
-	]
+	"permissions" : ["tabs"]
 }
