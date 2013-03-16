@@ -3,6 +3,8 @@ chrome.extension.onMessage.addListener(function(request, sender) {
 		chrome.tabs.create({
 			url : request.url,
 			active : false
+		}, function(tab) {
+
 		});
 	}
 });

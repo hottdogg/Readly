@@ -10,7 +10,6 @@ var keyActions = {
 		var article = inlineFrame || selectedEntry;
 		if (article) {
 			var url = article.querySelector('a.title').href;
-
 			chrome.extension.sendMessage({
 				url : url
 			});
