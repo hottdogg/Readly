@@ -59,14 +59,18 @@
 	color: #909090;
 }
 
-.home .condensed .inlineFrame .entryBody img {
+.home .condensed .inlineFrame .entryBody .content img {
 	margin-left: 0 !important;
 	margin-right: 0 !important;
 }
 
-.home .condensed .inlineFrame .entryBody img[src*="freakenergy.ru"] {
+.home .condensed .inlineFrame .entryBody .content img[src*="freakenergy.ru"] {
 	width: 250px !important;
 	height: 250px !important;
+}
+
+.home .condensed .inlineFrame .entryBody .content > iframe {
+	margin-left: 0 !important;
 }
 
 .home .topWikiWidget,.home .bottomWikiWidget {
