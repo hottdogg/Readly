@@ -74,6 +74,10 @@
 	height: 250px !important;
 }
 
+.home .condensed .inlineFrame .entryBody > iframe {
+	margin-left: 0 !important;
+}
+
 .home .condensed .inlineFrame .entryBody .content > iframe {
 	margin-left: 0 !important;
 }
