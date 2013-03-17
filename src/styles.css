@@ -60,6 +60,10 @@
 	color: #909090;
 }
 
+.home .condensed .inlineFrame .u100Entry {
+	min-height: 0;
+}
+
 .home .condensed .inlineFrame .entryBody .content img {
 	margin-left: 0 !important;
 	margin-right: 0 !important;
