@@ -7,6 +7,10 @@
 	margin-right: 0;
 }
 
+.home #feedlyTabsHolder div.simpleUnreadCount {
+	pointer-events: none;
+}
+
 .home #systemBar {
 	display: none;
 }
@@ -62,6 +66,14 @@
 
 .home .condensed .inlineFrame .u100Entry {
 	min-height: 0;
+}
+
+.home .condensed .u0entry.selectedEntry {
+	padding-top: 0;
+	padding-bottom: 0;
+	height: 34px;
+	-webkit-box-shadow: none;
+	background: #E4E4E4;
 }
 
 .home .condensed .inlineFrame .entryBody .content img {
