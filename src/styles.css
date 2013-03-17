@@ -11,6 +11,10 @@
 	pointer-events: none;
 }
 
+.home #feedlyTabsHolder .favicon {
+	opacity: 0.85;
+}
+
 .home #systemBar {
 	display: none;
 }
