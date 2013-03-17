@@ -76,7 +76,7 @@
 	background: #E4E4E4;
 }
 
-.home .condensed .inlineFrame .entryBody .content img {
+.home .condensed .inlineFrame .entryBody img {
 	margin-left: 0 !important;
 	margin-right: 0 !important;
 }
@@ -86,11 +86,7 @@
 	height: 250px !important;
 }
 
-.home .condensed .inlineFrame .entryBody > iframe {
-	margin-left: 0 !important;
-}
-
-.home .condensed .inlineFrame .entryBody .content > iframe {
+.home .condensed .inlineFrame .entryBody iframe {
 	margin-left: 0 !important;
 }
 

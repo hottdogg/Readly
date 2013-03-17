@@ -54,17 +54,17 @@ document.addEventListener('keydown', function(e) {
 
 // hide categories with no unread items
 // I'll leave here for now, maybe some optimizations later
-(function hideCategories() {
-	var categories = document.querySelectorAll('#feedlyTabs .tab');
-	var i = 0, l = categories.length, cat, unread;
-	for (; i < l; i += 1) {
-		cat = categories[i];
-		if (/^\d+_tab/.test(cat.id)) {
-			unread = cat.querySelector('.categoryUnreadCount');
-			if (!unread.innerText.trim() || unread.innerText.trim() === '0') {
-				cat.style.display = 'none';
-			}
-		}
-	}
-	setTimeout(hideCategories, 500);
-}());
+// (function hideCategories() {
+// var categories = document.querySelectorAll('#feedlyTabs .tab');
+// var i = 0, l = categories.length, cat, unread;
+// for (; i < l; i += 1) {
+// cat = categories[i];
+// if (/^\d+_tab/.test(cat.id)) {
+// unread = cat.querySelector('.categoryUnreadCount');
+// if (!unread.innerText.trim() || unread.innerText.trim() === '0') {
+// cat.style.display = 'none';
+// }
+// }
+// }
+// setTimeout(hideCategories, 500);
+// }());
