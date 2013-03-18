@@ -98,6 +98,6 @@
 	display: none !important;
 }
 
-.home .condensed .entryBody br+br {
+.home .condensed .entryBody>br+br {
 	display: none;
 }
