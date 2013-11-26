@@ -1,6 +1,6 @@
 {
 	"name" : "Readly",
-	"version" : "0.6.0.16",
+	"version" : "0.6.0.17",
 	"manifest_version" : 2,
 	
 	"description" : "A little Google Reader treatment for Feedly",
@@ -17,7 +17,7 @@
 	},
 	
 	"content_scripts" : [{
-			"matches" : ["http://www.feedly.com/home*", "https://www.feedly.com/home*", "http://cloud.feedly.com/*", "https://cloud.feedly.com/*"],
+			"matches" : ["http://www.feedly.com/home*", "https://www.feedly.com/home*", "http://cloud.feedly.com/*", "https://cloud.feedly.com/*", "http://feedly.com/*", "https://feedly.com/*"],
 			"css" : ["styles.css"],
 			"js" : ["script.js"]
 	}]
