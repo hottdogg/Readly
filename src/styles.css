@@ -101,3 +101,11 @@
 .home .condensed .entryBody>br+br {
 	display: none;
 }
+
+.home .condensed .u0Entry:hover .condensedTools {
+	display: none;
+}
+
+.home .condensed .recommendationInfo {
+	display: none;
+}
