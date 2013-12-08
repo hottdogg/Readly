@@ -88,6 +88,8 @@
 .home .condensed .inlineFrame .entryBody .content img[src*="freakenergy.ru"] {
 	width: 250px !important;
 	height: 250px !important;
+	margin: 0 50px 0 0 !important;
+	float: left;
 }
 
 .home .condensed .inlineFrame .entryBody iframe {
