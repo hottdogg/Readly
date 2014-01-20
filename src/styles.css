@@ -90,3 +90,12 @@
 .home .condensed .recommendationInfo {
 	display: none;
 }
+/* big mark as read button modification */
+.home .condensed #bigMarkAllAsReadButton {
+	width: auto;
+	margin-right: 0;
+}
+
+.home .condensed #bigMarkAllAsReadStats {
+	width: auto;
+}
