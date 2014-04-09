@@ -38,14 +38,33 @@
 					pageActionMarkAsRead.click();
 				}
 			}
+		},
+		'cs70': {
+			srcElement: ['INPUT', false],
+			handler: function () {
+				// ctrl+shift+f - filter freake.ru feed by trance releases
+
+				var freakeEntries = document.querySelectorAll('.u0Entry:not(.readly-filtered)[data-alternate-link*="freake"]');
+				Array.prototype.forEach.call(freakeEntries, function (entry, i) {
+					entry.classList.add('readly-filtered');
+
+					if (entry.innerHTML.toLowerCase().indexOf('trance') === -1) {
+						// no trance release - mark as read
+						entry.querySelector('.condensedTools img[title="Mark as read and hide"]').click();
+					}
+				});
+
+				// reload feed then
+				document.getElementById('pageActionRefresh').click();
+			}
 		}
 	};
 
 	var getPressedKeys = function (e) {
 		var keys = '';
 
-		e.shiftKey && (keys += 's');
 		e.ctrlKey && (keys += 'c');
+		e.shiftKey && (keys += 's');
 		e.metaKey && (keys += 'm');
 		e.altKey && (keys += 'a');
 
