@@ -48,8 +48,9 @@
 				Array.prototype.forEach.call(freakeEntries, function (entry, i) {
 					entry.classList.add('readly-filtered');
 
-					if (entry.innerHTML.toLowerCase().indexOf('trance') === -1) {
-						// no trance release - mark as read
+					var html = entry.innerHTML.toLowerCase();
+					if (html.indexOf('trance') === -1 || html.indexOf('type: radioshow') !== -1) {
+						// no trance release || radioshow - mark as read
 						entry.querySelector('.condensedTools img[title="Mark as read and hide"]').click();
 					}
 				});
