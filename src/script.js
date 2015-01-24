@@ -1,22 +1,48 @@
 (function () {
+    var lastArticleId = null;
+    var updateLastArticleId = function (article) {
+        if (!article) {
+            return;
+        }
+        lastArticleId = article.id.replace(/_(inlineframe|main)/, '');
+    };
+    var getLastArticle = function () {
+        if (!lastArticleId) {
+            return null;
+        }
+        return document.getElementById(lastArticleId + '_inlineframe') || document.getElementById(lastArticleId + '_main')
+    };
+
+    var getCurrentArticle = function () {
+        // opened article
+        var inlineFrame = document.querySelector('.inlineFrame');
+        // selected, but closed article
+        var selectedEntry = document.querySelector('.u0Entry.selectedEntry');
+        // last article
+        var articleById = getLastArticle();
+
+        var currentArticle = inlineFrame || selectedEntry || articleById;
+
+        updateLastArticleId(currentArticle);
+
+        return currentArticle;
+    };
+
     var keyActions = {
         '86': {
             srcElement: ['INPUT', false],
             handler: function () {
                 // v - open article in background tab
 
-                // opened article
-                var inlineFrame = document.querySelector('.inlineFrame');
-                // var selected, but closed article
-                var selectedEntry = document.querySelector('.u0Entry.selectedEntry');
-
-                var article = inlineFrame || selectedEntry;
-                if (article) {
-                    var url = article.querySelector('a.title').href;
-                    chrome.extension.sendMessage({
-                        url: url
-                    });
+                var article = getCurrentArticle();
+                if (!article) {
+                    return;
                 }
+
+                var url = article.querySelector('a.title').href;
+                chrome.extension.sendMessage({
+                    url: url
+                });
             }
         },
         '82': {
@@ -37,6 +63,65 @@
                     // mark as read button is present and visible - we can click on it
                     pageActionMarkAsRead.click();
                 }
+            }
+        },
+        '79': {
+            srcElement: ['INPUT', false],
+            handler: function () {
+                // o - toggle open-close article
+
+                var article = getCurrentArticle();
+                if (!article) {
+                    return;
+                }
+
+                article.click();
+            }
+        },
+        '74': {
+            srcElement: ['INPUT', false],
+            handler: function () {
+                // j - next article
+
+                var article = getCurrentArticle();
+                if (!article) {
+                    return;
+                }
+
+                // get next article with "_main" postfix
+                do {
+                    article = article.nextElementSibling;
+                } while (article && !/_main$/.test(article.id));
+
+                if (!article) {
+                    // null if this is last article
+                    return;
+                }
+
+                article.click();
+            }
+        },
+        '75': {
+            srcElement: ['INPUT', false],
+            handler: function () {
+                // k - prev article
+
+                var article = getCurrentArticle();
+                if (!article) {
+                    return;
+                }
+
+                // get next article with "_main" postfix
+                do {
+                    article = article.previousElementSibling;
+                } while (article && !/_main$/.test(article.id));
+
+                if (!article) {
+                    // null if this is the first article
+                    return;
+                }
+
+                article.click();
             }
         }
     };
