@@ -13,7 +13,7 @@
         return document.getElementById(lastArticleId + '_inlineframe') || document.getElementById(lastArticleId + '_main')
     };
 
-    var getCurrentArticle = function () {
+    var getCurrentArticle = function (includeFirstArticleInList) {
         // opened article
         var inlineFrame = document.querySelector('.inlineFrame');
         // selected, but closed article
@@ -21,7 +21,9 @@
         // last article
         var articleById = getLastArticle();
 
-        var currentArticle = inlineFrame || selectedEntry || articleById;
+        var firstArticle = includeFirstArticleInList ? document.querySelector('.u0Entry') : null;
+
+        var currentArticle = inlineFrame || selectedEntry || articleById || firstArticle;
 
         updateLastArticleId(currentArticle);
 
@@ -83,15 +85,17 @@
             handler: function () {
                 // j - next article
 
-                var article = getCurrentArticle();
+                var article = getCurrentArticle(true);
                 if (!article) {
                     return;
                 }
 
-                // get next article with "_main" postfix
-                do {
-                    article = article.nextElementSibling;
-                } while (article && !/_main$/.test(article.id));
+                if (!/_main$/.test(article.id)) {
+                    // get next article with "_main" postfix
+                    do {
+                        article = article.nextElementSibling;
+                    } while (article && !/_main$/.test(article.id));
+                }
 
                 if (!article) {
                     // null if this is last article
