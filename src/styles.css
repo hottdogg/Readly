@@ -24,10 +24,6 @@
     border-bottom: none !important;
 }
 
-.home #mainArea {
-    padding-top: 10px;
-}
-
 .home #feedlyPageHeader {
     margin-top: 10px;
 }
@@ -52,6 +48,10 @@
 .home #loadingEntries {
     margin-top: 15px;
     padding-bottom: 20px;
+}
+
+.home #feedlyTitleBar {
+    height: auto;
 }
 
 /* styles for article in condensed view */
