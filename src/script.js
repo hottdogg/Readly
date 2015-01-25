@@ -111,7 +111,7 @@
                     return;
                 }
 
-                // get next article with "_main" postfix
+                // get prev article with "_main" postfix
                 do {
                     article = article.previousElementSibling;
                 } while (article && !/_main$/.test(article.id));
@@ -122,6 +122,21 @@
                 }
 
                 article.click();
+            }
+        },
+        '77': {
+            srcElement: ['INPUT', false],
+            handler: function () {
+                // m - mark article as read/unread
+
+                var article = getCurrentArticle();
+                if (!article) {
+                    return;
+                }
+
+
+
+
             }
         }
     };
