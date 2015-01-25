@@ -123,6 +123,17 @@
 
                 article.click();
             }
+        },
+        '77': {
+            srcElement: ['INPUT', false],
+            handler: function () {
+                // m - mark article as read/unread
+
+                var article = getCurrentArticle();
+                if (!article) {
+                    return;
+                }
+            }
         }
     };
 
