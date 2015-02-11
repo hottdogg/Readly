@@ -28,6 +28,33 @@
         return currentArticle;
     };
 
+    var getFeedlyVersion = function () {
+        if (window.feedlyApplicationVersion) {
+            return window.feedlyApplicationVersion;
+        }
+        return document.documentElement.innerHTML.match(/web\/([^/]+)\/js/)[1];
+    };
+
+    var getCookie = function (cname) {
+        var name = cname + '=';
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1);
+            if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+        }
+        return '';
+    };
+
+    var openRequest = function (method, url) {
+        var request = new XMLHttpRequest();
+        request.open(method.toUpperCase(), url);
+        request.withCredentials = true;
+        request.setRequestHeader('$Authorization.feedly', '$FeedlyAuth');
+        request.setRequestHeader('Authorization', JSON.parse(getCookie('session@cloud')).feedlyToken);
+        return request;
+    };
+
     var keyActions = {
         '86': {
             srcElement: ['INPUT', false],
@@ -133,6 +160,24 @@
                 if (!article) {
                     return;
                 }
+
+                var isArtcileRead = !!article.querySelector('.title.read');
+
+                var request = openRequest('post', 'http://feedly.com/v3/markers?ck=' + Date.now() + '&ct=feedly.desktop&cv=' + getFeedlyVersion());
+                request.addEventListener('load', function () {
+                    if (/^2\d+/.test(request.status.toString())) {
+                        Array.prototype.slice.call(document.querySelectorAll('a[id^="' + lastArticleId + '"]'))
+                            .forEach(function (title) {
+                                title.classList.toggle('read');
+                                title.classList.toggle('unread');
+                            });
+                    }
+                }, false);
+                request.send(JSON.stringify({
+                    action: isArtcileRead ? 'keepUnread' : 'markAsRead',
+                    entryIds: [lastArticleId],
+                    type: 'entries'
+                }));
             }
         }
     };
