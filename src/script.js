@@ -57,6 +57,14 @@
         return request;
     };
 
+    var scrollToArticleTop = function () {
+        if (!lastArticleId) {
+            return;
+        }
+        var article = document.getElementById(lastArticleId + '_inlineframe');
+        document.body.scrollTop = article.offsetTop - 50;
+    };
+
     var keyActions = {
         '86': {
             srcElement: ['INPUT', false],
@@ -129,7 +137,9 @@
                     return;
                 }
 
+                updateLastArticleId(article);
                 article.click();
+                scrollToArticleTop();
             }
         },
         '75': {
@@ -152,7 +162,9 @@
                     return;
                 }
 
+                updateLastArticleId(article);
                 article.click();
+                scrollToArticleTop();
             }
         },
         '77': {
