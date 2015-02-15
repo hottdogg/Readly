@@ -65,6 +65,53 @@
         document.body.scrollTop = article.offsetTop - 50;
     };
 
+    var showMessage = function (text) {
+        var getClientHeight = function (x) {
+            var w = x.defaultView;
+            if (typeof(w.innerHeight) == "number") {
+                return w.innerHeight
+            } else {
+                if (x.documentElement && x.documentElement.clientHeight) {
+                    return x.documentElement.clientHeight
+                } else {
+                    if (x.body && x.body.clientHeight) {
+                        return x.body.clientHeight
+                    }
+                }
+            }
+        };
+
+        var getClientWidth = function (x) {
+            if (x == null || x.defaultView == null) {
+                return 1024
+            }
+            var w = x.defaultView;
+            if (typeof(w.innerWidth) == "number") {
+                return w.innerWidth
+            } else {
+                if (x.documentElement && x.documentElement.clientWidth) {
+                    return x.documentElement.clientWidth
+                } else {
+                    if (x.body && x.body.clientWidth) {
+                        return x.body.clientWidth
+                    }
+                }
+            }
+        };
+
+        var message = document.getElementById('feedlySignPart');
+        message.innerHTML = text;
+        message.style.opacity = 1;
+        message.style.display = 'block';
+        message.style.top = (document.defaultView.pageYOffset + (getClientHeight(document) - message.offsetHeight) / 3 * 2) + 'px';
+        message.style.left = ((getClientWidth(document) - message.offsetWidth) / 2) + 'px';
+    };
+
+    var hideMessage = function () {
+        var message = document.getElementById('feedlySignPart');
+        message.style.display = 'none';
+    };
+
     var keyActions = {
         '86': {
             srcElement: ['INPUT', false],
@@ -187,6 +234,7 @@
                                 title.classList.toggle('read');
                                 title.classList.toggle('unread');
                             });
+                        hideMessage();
                     }
                 }, false);
                 request.send(JSON.stringify({
@@ -194,6 +242,7 @@
                     entryIds: [lastArticleId],
                     type: 'entries'
                 }));
+                showMessage('Marking as ' + (isArtcileRead ? 'unread' : 'read') + '...');
             }
         }
     };
