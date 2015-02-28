@@ -226,7 +226,7 @@
 
                 var isArtcileRead = !!article.querySelector('.title.read');
 
-                var request = openRequest('post', 'http://feedly.com/v3/markers?ck=' + Date.now() + '&ct=feedly.desktop&cv=' + getFeedlyVersion());
+                var request = openRequest('post', '/v3/markers?ck=' + Date.now() + '&ct=feedly.desktop&cv=' + getFeedlyVersion());
                 request.addEventListener('load', function () {
                     if (/^2\d+/.test(request.status.toString())) {
                         Array.prototype.slice.call(document.querySelectorAll('a[id^="' + lastArticleId + '"]'))
