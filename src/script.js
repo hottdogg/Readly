@@ -142,9 +142,8 @@
             handler: function () {
                 // shift+a - mark all as read
 
-                var pageActionMarkAsRead = document.getElementById('pageActionMarkAsRead');
-                if (pageActionMarkAsRead && pageActionMarkAsRead.style.display !== 'none') {
-                    // mark as read button is present and visible - we can click on it
+                var pageActionMarkAsRead = document.querySelector('.button-markasread');
+                if (pageActionMarkAsRead) {
                     pageActionMarkAsRead.click();
                 }
             }
