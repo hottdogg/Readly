@@ -142,7 +142,7 @@
             handler: function () {
                 // shift+a - mark all as read
 
-                var pageActionMarkAsRead = document.querySelector('.button-markasread');
+                var pageActionMarkAsRead = document.querySelector('.mark-as-read-button');
                 if (pageActionMarkAsRead) {
                     pageActionMarkAsRead.click();
                 }
