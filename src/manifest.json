@@ -23,7 +23,6 @@
         "http://feedly.com/*",
         "https://feedly.com/*"
       ],
-      "css": ["styles.css"],
       "js": ["script.js"]
     }
   ],
