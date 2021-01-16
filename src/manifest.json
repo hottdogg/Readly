@@ -1,6 +1,6 @@
 {
   "name": "Readly",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "manifest_version": 2,
   "description": "A little Google Reader treatment for Feedly",
   "icons": {
@@ -26,6 +26,5 @@
       "css": ["styles.css"],
       "js": ["script.js"]
     }
-  ],
-  "permissions": ["notifications"]
+  ]
 }
