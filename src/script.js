@@ -19,7 +19,7 @@
           return;
         }
 
-        const url = article.querySelector('a.title').href;
+        const url = article.querySelector('a.entryTitle').href;
         chrome.extension.sendMessage({
           url: url,
         });
