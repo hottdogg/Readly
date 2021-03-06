@@ -39,7 +39,7 @@
     return keys;
   };
 
-  document.addEventListener(
+  window.addEventListener(
     'keydown',
     function (event) {
       const keyInfo = keyActions[getPressedKeys(event)];
@@ -54,10 +54,11 @@
         handler(event);
 
         // stop event propagation
+        event.stopImmediatePropagation();
         event.stopPropagation();
         event.preventDefault();
       }
     },
-    false,
+    { capture: true },
   );
 })();
