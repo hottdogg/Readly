@@ -1,3 +1,8 @@
+body .LeftnavListRow--child,
+body .LeftnavListRow--link {
+  font-weight: 600;
+}
+
 .annotationsHolder {
   display: none;
 }
